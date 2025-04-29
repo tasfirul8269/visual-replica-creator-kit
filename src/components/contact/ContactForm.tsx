@@ -1,11 +1,9 @@
 
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Check } from "lucide-react";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, SelectSeparator } from "@/components/ui/select";
 
 type FormData = {
   firstName: string;
@@ -52,7 +50,7 @@ export const ContactForm: React.FC = () => {
           our office — we'd love to meet you.
         </p>
       </div>
-      <div className="bg-white border self-stretch flex min-w-60 flex-col items-stretch text-black font-normal w-[765px] my-auto pt-9 pb-[85px] px-9 rounded-[20px] border-[rgba(0,0,0,0.1)] border-solid max-md:max-w-full max-md:px-5">
+      <div className="bg-white self-stretch flex min-w-60 flex-col items-stretch text-black font-normal w-[765px] my-auto pt-9 pb-[85px] px-9 rounded-[20px] border-[rgba(0,0,0,0.1)] border-solid max-md:max-w-full max-md:px-5">
         <h3 className="text-[32px] font-semibold font-['Montserrat']">Contact Form</h3>
         <div className="border min-h-px w-full mt-[30px] border-[rgba(0,0,0,0.05)] border-solid max-md:max-w-full" />
 
@@ -110,15 +108,20 @@ export const ContactForm: React.FC = () => {
                 onValueChange={(value) => setValue("interest", value)}
                 defaultValue=""
               >
-                <SelectTrigger className="bg-[rgba(246,247,255,1)] w-[265px] rounded-[10px] focus:outline-none focus:ring-2 focus:ring-[rgba(37,111,255,1)]">
+                <SelectTrigger className="bg-[rgba(246,247,255,1)] w-[265px] rounded-[10px] focus:outline-none focus:ring-2 focus:ring-[rgba(37,111,255,1)] border-0">
                   <SelectValue placeholder="Select your interest..." />
                 </SelectTrigger>
                 <SelectContent className="bg-white rounded-[20px] border border-[#e6e6e6]">
                   <SelectItem value="buying">Buying Property</SelectItem>
+                  <SelectSeparator />
                   <SelectItem value="selling">Selling Property</SelectItem>
+                  <SelectSeparator />
                   <SelectItem value="renting">Renting</SelectItem>
+                  <SelectSeparator />
                   <SelectItem value="investment">Investment Opportunities</SelectItem>
+                  <SelectSeparator />
                   <SelectItem value="management">Property Management</SelectItem>
+                  <SelectSeparator />
                   <SelectItem value="general">General Inquiry</SelectItem>
                 </SelectContent>
               </Select>
@@ -137,7 +140,7 @@ export const ContactForm: React.FC = () => {
                       onChange={() => setValue("contactMethod", "phone")}
                       className="peer appearance-none h-4 w-4 rounded border border-gray-300 checked:bg-[#256fff] checked:border-0"
                     />
-                    <Check className="absolute h-3 w-3 text-white pointer-events-none opacity-0 peer-checked:opacity-100" />
+                    <Check className="absolute h-3 w-3 text-white pointer-events-none opacity-0 peer-checked:opacity-100 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2" />
                   </div>
                   <Label htmlFor="phone" className="text-[15px] ml-1">
                     Phone Call
@@ -154,7 +157,7 @@ export const ContactForm: React.FC = () => {
                       onChange={() => setValue("contactMethod", "whatsapp")}
                       className="peer appearance-none h-4 w-4 rounded border border-gray-300 checked:bg-[#256fff] checked:border-0"
                     />
-                    <Check className="absolute h-3 w-3 text-white pointer-events-none opacity-0 peer-checked:opacity-100" />
+                    <Check className="absolute h-3 w-3 text-white pointer-events-none opacity-0 peer-checked:opacity-100 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2" />
                   </div>
                   <Label htmlFor="whatsapp" className="text-[15px] ml-1">
                     WhatsApp
@@ -171,7 +174,7 @@ export const ContactForm: React.FC = () => {
                       onChange={() => setValue("contactMethod", "email")}
                       className="peer appearance-none h-4 w-4 rounded border border-gray-300 checked:bg-[#256fff] checked:border-0"
                     />
-                    <Check className="absolute h-3 w-3 text-white pointer-events-none opacity-0 peer-checked:opacity-100" />
+                    <Check className="absolute h-3 w-3 text-white pointer-events-none opacity-0 peer-checked:opacity-100 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2" />
                   </div>
                   <Label htmlFor="email" className="text-[15px] ml-1">
                     Email
@@ -187,7 +190,7 @@ export const ContactForm: React.FC = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="bg-[rgba(198,234,255,0.4)] inline-flex w-auto min-w-[200px] gap-2.5 text-xl text-[rgba(37,111,255,1)] font-medium text-center px-10 py-5 rounded-[15px] hover:bg-[rgba(198,234,255,0.6)] transition-colors disabled:opacity-70 font-['Montserrat']"
+              className="bg-[rgba(198,234,255,0.4)] inline-flex justify-center w-auto min-w-[200px] gap-2.5 text-[18px] text-[rgba(37,111,255,1)] font-medium text-center px-10 py-5 rounded-[15px] hover:bg-[rgba(198,234,255,0.6)] transition-colors disabled:opacity-70 font-['Montserrat'] self-start"
             >
               {isSubmitting ? "Sending..." : "Send Message"}
             </button>

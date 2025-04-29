@@ -3,7 +3,9 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { PhoneCall, Mail, MessageSquare } from "lucide-react";
+import { Check } from "lucide-react";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 type FormData = {
   firstName: string;
@@ -102,61 +104,86 @@ export const ContactForm: React.FC = () => {
           <div className="flex max-w-full w-[686px] gap-[40px_180px] flex-wrap mt-[30px]">
             <div className="text-base grow shrink w-[118px]">
               <label htmlFor="interest" className="block mb-2.5">
-                Contact Method :
+                Interested in :
               </label>
-              <select
-                id="interest"
-                {...register("interest", { required: true })}
-                className="bg-[rgba(246,247,255,1)] flex max-w-full w-[265px] flex-col items-stretch justify-center mt-2.5 pl-[13px] pr-5 py-[15px] rounded-[10px] focus:outline-none focus:ring-2 focus:ring-[rgba(37,111,255,1)]"
+              <Select
+                onValueChange={(value) => setValue("interest", value)}
+                defaultValue=""
               >
-                <option value="" disabled selected>
-                  Select your interest ....
-                </option>
-                <option value="buy">Buy Property</option>
-                <option value="rent">Rent Property</option>
-                <option value="sell">Sell Property</option>
-                <option value="other">Other</option>
-              </select>
+                <SelectTrigger className="bg-[rgba(246,247,255,1)] w-[265px] rounded-[10px] focus:outline-none focus:ring-2 focus:ring-[rgba(37,111,255,1)]">
+                  <SelectValue placeholder="Select your interest..." />
+                </SelectTrigger>
+                <SelectContent className="bg-white rounded-[20px] border border-[#e6e6e6]">
+                  <SelectItem value="buying">Buying Property</SelectItem>
+                  <SelectItem value="selling">Selling Property</SelectItem>
+                  <SelectItem value="renting">Renting</SelectItem>
+                  <SelectItem value="investment">Investment Opportunities</SelectItem>
+                  <SelectItem value="management">Property Management</SelectItem>
+                  <SelectItem value="general">General Inquiry</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
 
             <div className="flex min-w-60 flex-col items-stretch justify-center grow shrink w-[302px]">
               <div className="text-base">Contact Method :</div>
-              <RadioGroup
-                defaultValue="phone"
-                className="flex items-center justify-between mt-[25px]"
-                onValueChange={(value) => setValue("contactMethod", value as "phone" | "whatsapp" | "email")}
-                value={contactMethod}
-              >
+              <div className="flex items-center justify-between mt-[25px]">
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="phone" id="phone" className="h-4 w-4" />
-                  <Label htmlFor="phone" className="flex items-center gap-1.5 text-[15px]">
-                    <PhoneCall className="h-[15px] w-[15px]" />
-                    <span>Phone Call</span>
+                  <div className="relative flex items-center">
+                    <input
+                      type="radio"
+                      id="phone"
+                      value="phone"
+                      checked={contactMethod === "phone"}
+                      onChange={() => setValue("contactMethod", "phone")}
+                      className="peer appearance-none h-4 w-4 rounded border border-gray-300 checked:bg-[#256fff] checked:border-0"
+                    />
+                    <Check className="absolute h-3 w-3 text-white pointer-events-none opacity-0 peer-checked:opacity-100" />
+                  </div>
+                  <Label htmlFor="phone" className="text-[15px] ml-1">
+                    Phone Call
                   </Label>
                 </div>
 
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="whatsapp" id="whatsapp" className="h-4 w-4" />
-                  <Label htmlFor="whatsapp" className="flex items-center gap-1.5 text-[15px]">
-                    <MessageSquare className="h-[15px] w-[15px]" />
-                    <span>WhatsApp</span>
+                  <div className="relative flex items-center">
+                    <input
+                      type="radio"
+                      id="whatsapp"
+                      value="whatsapp"
+                      checked={contactMethod === "whatsapp"}
+                      onChange={() => setValue("contactMethod", "whatsapp")}
+                      className="peer appearance-none h-4 w-4 rounded border border-gray-300 checked:bg-[#256fff] checked:border-0"
+                    />
+                    <Check className="absolute h-3 w-3 text-white pointer-events-none opacity-0 peer-checked:opacity-100" />
+                  </div>
+                  <Label htmlFor="whatsapp" className="text-[15px] ml-1">
+                    WhatsApp
                   </Label>
                 </div>
 
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="email" id="email" className="h-4 w-4" />
-                  <Label htmlFor="email" className="flex items-center gap-1.5 text-[15px]">
-                    <Mail className="h-[15px] w-[15px]" />
-                    <span>Email</span>
+                  <div className="relative flex items-center">
+                    <input
+                      type="radio"
+                      id="email"
+                      value="email"
+                      checked={contactMethod === "email"}
+                      onChange={() => setValue("contactMethod", "email")}
+                      className="peer appearance-none h-4 w-4 rounded border border-gray-300 checked:bg-[#256fff] checked:border-0"
+                    />
+                    <Check className="absolute h-3 w-3 text-white pointer-events-none opacity-0 peer-checked:opacity-100" />
+                  </div>
+                  <Label htmlFor="email" className="text-[15px] ml-1">
+                    Email
                   </Label>
                 </div>
-              </RadioGroup>
+              </div>
             </div>
           </div>
 
           <div className="border min-h-px w-full mt-[30px] border-[rgba(0,0,0,0.05)] border-solid max-md:max-w-full" />
 
-          <div className="flex justify-center mt-[30px]">
+          <div className="flex mt-[30px]">
             <button
               type="submit"
               disabled={isSubmitting}

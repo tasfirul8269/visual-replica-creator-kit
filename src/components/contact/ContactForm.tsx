@@ -1,5 +1,9 @@
+
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
+import { PhoneCall, Mail, Whatsapp } from "lucide-react";
 
 type FormData = {
   firstName: string;
@@ -16,11 +20,15 @@ export const ContactForm: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>();
+    setValue,
+    watch,
+  } = useForm<FormData>({
+    defaultValues: {
+      contactMethod: "phone",
+    },
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [contactMethod, setContactMethod] = useState<
-    "phone" | "whatsapp" | "email"
-  >("phone");
+  const contactMethod = watch("contactMethod");
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
@@ -113,63 +121,50 @@ export const ContactForm: React.FC = () => {
 
             <div className="flex min-w-60 flex-col items-stretch justify-center grow shrink w-[302px]">
               <div className="text-base">Contact Method :</div>
-              <div className="flex w-full max-w-[331px] items-stretch gap-5 text-[15px] justify-between mt-[25px] rounded-[0px_0px_0px_0px]">
-                <label className="flex items-stretch gap-px cursor-pointer">
-                  <input
-                    type="radio"
-                    value="phone"
-                    checked={contactMethod === "phone"}
-                    onChange={() => setContactMethod("phone")}
-                    className="hidden"
-                  />
-                  <img
-                    src="https://cdn.builder.io/api/v1/image/assets/641f5fc1a0e14172a7f4376b457540cc/de28b84edea01858b915c825152d6a01d1bc5015?placeholderIfAbsent=true"
-                    alt="Phone Call"
-                    className="aspect-[1] object-contain w-[15px] shrink-0 rounded-[5px]"
-                  />
-                  <span>Phone Call</span>
-                </label>
+              <RadioGroup
+                defaultValue="phone"
+                className="flex items-center justify-between mt-[25px]"
+                onValueChange={(value) => setValue("contactMethod", value as "phone" | "whatsapp" | "email")}
+                value={contactMethod}
+              >
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="phone" id="phone" className="h-4 w-4" />
+                  <Label htmlFor="phone" className="flex items-center gap-1.5 text-[15px]">
+                    <PhoneCall className="h-[15px] w-[15px]" />
+                    <span>Phone Call</span>
+                  </Label>
+                </div>
 
-                <label className="flex items-stretch gap-1 whitespace-nowrap cursor-pointer">
-                  <input
-                    type="radio"
-                    value="whatsapp"
-                    checked={contactMethod === "whatsapp"}
-                    onChange={() => setContactMethod("whatsapp")}
-                    className="hidden"
-                  />
-                  <div
-                    className={`flex w-[15px] shrink-0 h-[15px] rounded-[5px] border-[rgba(0,0,0,0.4)] border-solid ${contactMethod === "whatsapp" ? "bg-[rgba(37,111,255,1)] border-[rgba(37,111,255,1)]" : "bg-[rgba(217,217,217,0)] border"}`}
-                  />
-                  <span>WhatsApp</span>
-                </label>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="whatsapp" id="whatsapp" className="h-4 w-4" />
+                  <Label htmlFor="whatsapp" className="flex items-center gap-1.5 text-[15px]">
+                    <Whatsapp className="h-[15px] w-[15px]" />
+                    <span>WhatsApp</span>
+                  </Label>
+                </div>
 
-                <label className="flex items-stretch gap-1 whitespace-nowrap cursor-pointer">
-                  <input
-                    type="radio"
-                    value="email"
-                    checked={contactMethod === "email"}
-                    onChange={() => setContactMethod("email")}
-                    className="hidden"
-                  />
-                  <div
-                    className={`flex w-[15px] shrink-0 h-[15px] rounded-[5px] border-[rgba(0,0,0,0.4)] border-solid ${contactMethod === "email" ? "bg-[rgba(37,111,255,1)] border-[rgba(37,111,255,1)]" : "bg-[rgba(217,217,217,0)] border"}`}
-                  />
-                  <span>Email</span>
-                </label>
-              </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="email" id="email" className="h-4 w-4" />
+                  <Label htmlFor="email" className="flex items-center gap-1.5 text-[15px]">
+                    <Mail className="h-[15px] w-[15px]" />
+                    <span>Email</span>
+                  </Label>
+                </div>
+              </RadioGroup>
             </div>
           </div>
 
           <div className="border min-h-px w-full mt-[30px] border-[rgba(0,0,0,0.05)] border-solid max-md:max-w-full" />
 
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="bg-[rgba(198,234,255,0.4)] w-full gap-2.5 text-xl text-[rgba(37,111,255,1)] font-medium text-center mt-[30px] p-5 rounded-[15px] hover:bg-[rgba(198,234,255,0.6)] transition-colors disabled:opacity-70"
-          >
-            {isSubmitting ? "Sending..." : "Send Message"}
-          </button>
+          <div className="flex justify-center mt-[30px]">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="bg-[rgba(198,234,255,0.4)] inline-flex w-auto min-w-[200px] gap-2.5 text-xl text-[rgba(37,111,255,1)] font-medium text-center px-10 py-5 rounded-[15px] hover:bg-[rgba(198,234,255,0.6)] transition-colors disabled:opacity-70"
+            >
+              {isSubmitting ? "Sending..." : "Send Message"}
+            </button>
+          </div>
         </form>
       </div>
     </section>

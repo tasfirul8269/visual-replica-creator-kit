@@ -9,10 +9,10 @@ export const ContactHero: React.FC = () => {
         alt="Contact Hero Background"
         className="absolute h-full w-full object-cover inset-0"
       />
-      <div className="relative text-white text-5xl font-semibold max-md:max-w-full max-md:text-[40px]">
+      <div className="relative text-white text-5xl font-semibold max-md:max-w-full max-md:text-[40px] font-['Montserrat']">
         Book a Free Consultation
       </div>
-      <div className="relative text-[rgba(205,205,205,1)] text-2xl font-medium text-center mt-5 max-md:max-w-full">
+      <div className="relative text-[rgba(205,205,205,1)] text-2xl font-medium text-center mt-5 max-md:max-w-full font-['Montserrat']">
         Let's schedule a time to talk. Whether it's a Zoom call or a coffee at
         our office
         <br /> — we'd love to meet you.

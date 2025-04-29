@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { PhoneCall, Mail, Whatsapp } from "lucide-react";
+import { PhoneCall, Mail, MessageSquare } from "lucide-react";
 
 type FormData = {
   firstName: string;
@@ -42,21 +42,21 @@ export const ContactForm: React.FC = () => {
   return (
     <section className="bg-[rgba(37,111,255,1)] self-stretch flex w-full items-center gap-[40px_54px] overflow-hidden justify-between flex-wrap mt-12 pl-[110px] pr-[30px] py-[30px] max-md:max-w-full max-md:mt-10 max-md:px-5">
       <div className="self-stretch flex min-w-60 flex-col items-stretch justify-center w-[479px] my-auto max-md:max-w-full">
-        <h2 className="text-white text-4xl font-semibold max-md:max-w-full">
+        <h2 className="text-white text-4xl font-semibold max-md:max-w-full font-['Montserrat']">
           Book a Free Consultation
         </h2>
-        <p className="text-[rgba(230,230,230,1)] text-2xl font-normal mt-5 max-md:max-w-full">
+        <p className="text-[rgba(230,230,230,1)] text-2xl font-normal mt-5 max-md:max-w-full font-['Montserrat']">
           Let's schedule a time to talk. Whether it's a Zoom call or a coffee at
           our office — we'd love to meet you.
         </p>
       </div>
       <div className="bg-white border self-stretch flex min-w-60 flex-col items-stretch text-black font-normal w-[765px] my-auto pt-9 pb-[85px] px-9 rounded-[20px] border-[rgba(0,0,0,0.1)] border-solid max-md:max-w-full max-md:px-5">
-        <h3 className="text-[32px] font-semibold">Contact Form</h3>
+        <h3 className="text-[32px] font-semibold font-['Montserrat']">Contact Form</h3>
         <div className="border min-h-px w-full mt-[30px] border-[rgba(0,0,0,0.05)] border-solid max-md:max-w-full" />
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="w-full text-base mt-[30px] max-md:max-w-full"
+          className="w-full text-base mt-[30px] max-md:max-w-full font-['Montserrat']"
         >
           <div className="flex max-w-full w-[686px] items-stretch gap-1.5 flex-wrap rounded-[10px]">
             <input
@@ -138,7 +138,7 @@ export const ContactForm: React.FC = () => {
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="whatsapp" id="whatsapp" className="h-4 w-4" />
                   <Label htmlFor="whatsapp" className="flex items-center gap-1.5 text-[15px]">
-                    <Whatsapp className="h-[15px] w-[15px]" />
+                    <MessageSquare className="h-[15px] w-[15px]" />
                     <span>WhatsApp</span>
                   </Label>
                 </div>
@@ -160,7 +160,7 @@ export const ContactForm: React.FC = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="bg-[rgba(198,234,255,0.4)] inline-flex w-auto min-w-[200px] gap-2.5 text-xl text-[rgba(37,111,255,1)] font-medium text-center px-10 py-5 rounded-[15px] hover:bg-[rgba(198,234,255,0.6)] transition-colors disabled:opacity-70"
+              className="bg-[rgba(198,234,255,0.4)] inline-flex w-auto min-w-[200px] gap-2.5 text-xl text-[rgba(37,111,255,1)] font-medium text-center px-10 py-5 rounded-[15px] hover:bg-[rgba(198,234,255,0.6)] transition-colors disabled:opacity-70 font-['Montserrat']"
             >
               {isSubmitting ? "Sending..." : "Send Message"}
             </button>

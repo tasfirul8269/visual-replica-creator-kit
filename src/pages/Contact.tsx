@@ -11,9 +11,11 @@ function Contact() {
   return (
     <div className="bg-white flex flex-col overflow-hidden items-center w-full">
       <Header />
-      <ContactHero />
-      <ContactForm />
-      <OfficeInfo />
+      <div className="w-full max-w-[1440px] mx-auto px-4">
+        <ContactHero />
+        <ContactForm />
+        <OfficeInfo />
+      </div>
       <Footer />
     </div>
   );

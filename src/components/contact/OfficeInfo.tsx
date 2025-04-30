@@ -1,14 +1,14 @@
+
 import React from "react";
+import { MapComponent } from "./MapComponent";
 
 export const OfficeInfo: React.FC = () => {
   return (
-    <section className="w-[1372px] max-w-full mt-12 max-md:mt-10">
+    <section className="w-[1372px] max-w-full mt-12 max-md:mt-10 px-4">
       <div className="flex w-full gap-7 justify-between flex-wrap">
-        <img
-          src="https://cdn.builder.io/api/v1/image/assets/641f5fc1a0e14172a7f4376b457540cc/260a3172ff012db68580de59966e41d0ab64be11?placeholderIfAbsent=true"
-          alt="Office Location Map"
-          className="aspect-[1.29] object-contain w-[774px] min-w-60 rounded-[20px] max-md:max-w-full"
-        />
+        <div className="aspect-[1.29] object-contain w-[774px] min-w-60 rounded-[20px] max-md:max-w-full overflow-hidden">
+          <MapComponent />
+        </div>
         <div className="min-w-60 w-[570px] rounded-[20px] max-md:max-w-full">
           <div className="bg-white border overflow-hidden text-base text-black font-medium pl-[30px] pr-4 py-[30px] rounded-[20px] border-[rgba(0,0,0,0.1)] border-solid max-md:max-w-full max-md:pl-5">
             <h3 className="text-[rgba(37,111,255,1)] text-xl font-semibold">

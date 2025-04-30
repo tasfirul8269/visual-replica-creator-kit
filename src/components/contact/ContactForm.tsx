@@ -190,7 +190,7 @@ export const ContactForm: React.FC = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="bg-[rgba(198,234,255,0.4)] inline-flex justify-center w-auto min-w-[200px] gap-2.5 text-[18px] text-[rgba(37,111,255,1)] font-medium text-center px-10 py-5 rounded-[15px] hover:bg-[rgba(198,234,255,0.6)] transition-colors disabled:opacity-70 font-['Montserrat'] self-start"
+              className="bg-[rgba(198,234,255,0.4)] inline-flex justify-center w-auto min-w-[200px] gap-2.5 text-[18px] text-[rgba(37,111,255,1)] font-medium text-center px-10 py-5 rounded-[15px] hover:bg-[rgba(198,234,255,0.6)] transition-colors disabled:opacity-70 font-['Montserrat']"
             >
               {isSubmitting ? "Sending..." : "Send Message"}
             </button>

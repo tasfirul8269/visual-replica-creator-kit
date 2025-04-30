@@ -14,8 +14,8 @@ export const MapComponent: React.FC = () => {
     // In production, this should be stored in environment variables
     mapboxgl.accessToken = 'pk.eyJ1IjoibG92YWJsZS1kZW1vIiwiYSI6ImNsbjBnczBhMjA1cWsya3A5OHVsOGR4cTcifQ.MZjl2LmQytKdS3yYHDvHTw';
     
-    // Dubai coordinates
-    const dubaiBaySquare = [55.267311, 25.185734];
+    // Dubai coordinates - using a tuple [lng, lat] instead of an array
+    const dubaiBaySquare: [number, number] = [55.267311, 25.185734];
     
     map.current = new mapboxgl.Map({
       container: mapContainer.current,

@@ -1,3 +1,4 @@
+
 "use client";
 import React from "react";
 import { Header } from "@/components/layout/Header";
@@ -8,7 +9,7 @@ import { OfficeInfo } from "@/components/contact/OfficeInfo";
 
 function Contact() {
   return (
-    <div className="bg-white flex flex-col overflow-hidden items-center">
+    <div className="bg-white flex flex-col overflow-hidden items-center w-full">
       <Header />
       <ContactHero />
       <ContactForm />
